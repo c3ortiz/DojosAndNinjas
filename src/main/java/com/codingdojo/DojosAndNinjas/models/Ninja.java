@@ -19,6 +19,16 @@ public class Ninja {
     @JoinColumn(name="dojo_id")
     private Dojo dojo;
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = new Date();
+    }
+
     public Ninja() {}
 
     public Long getId() {
